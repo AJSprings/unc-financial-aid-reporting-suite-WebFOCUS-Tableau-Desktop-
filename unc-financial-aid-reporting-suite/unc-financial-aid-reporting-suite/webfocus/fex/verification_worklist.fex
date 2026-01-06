@@ -1,0 +1,18 @@
+-* Verification Backlog Worklist
+-SET &AID_YEAR='2025-2026';
+
+TABLE FILE vw_verification_backlog
+  PRINT
+    banner_pidm AS 'PIDM'
+    college AS 'College'
+    level AS 'Level'
+    major AS 'Major'
+    status AS 'Status'
+    docs_missing AS 'Docs Missing'
+    days_since_selected AS 'Days Since Selected'
+    sla_flag AS 'SLA'
+    priority_score AS 'Priority'
+  WHERE aid_year EQ '&AID_YEAR'
+  BY HIGHEST priority_score
+ON TABLE SET PAGE-NUM OFF
+END

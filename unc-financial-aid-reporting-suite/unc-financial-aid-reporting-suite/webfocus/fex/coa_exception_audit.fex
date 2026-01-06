@@ -1,0 +1,20 @@
+-* COA Exception Audit (Term)
+-SET &TERM_CODE='202601';
+
+TABLE FILE vw_coa_exceptions
+  PRINT
+    banner_pidm AS 'PIDM'
+    college AS 'College'
+    level AS 'Level'
+    major AS 'Major'
+    budget_group AS 'Budget Group'
+    coa_total AS 'COA Total'
+    min_total AS 'Min'
+    max_total AS 'Max'
+    coa_policy_flag AS 'Policy Flag'
+    last_updated_by AS 'Updated By'
+    last_updated_ts AS 'Updated TS'
+  WHERE term_code EQ '&TERM_CODE'
+  AND coa_policy_flag EQ 'OUT_OF_POLICY'
+ON TABLE SET PAGE-NUM OFF
+END

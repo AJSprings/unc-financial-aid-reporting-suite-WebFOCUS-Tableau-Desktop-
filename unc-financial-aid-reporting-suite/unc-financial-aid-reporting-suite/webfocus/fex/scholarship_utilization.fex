@@ -1,0 +1,17 @@
+-* Scholarship Utilization + Overaward Risk
+-SET &AID_YEAR='2025-2026';
+
+TABLE FILE vw_scholarship_utilization
+  PRINT
+    banner_pidm AS 'PIDM'
+    college AS 'College'
+    level AS 'Level'
+    restricted_scholar_amt AS 'Restricted $'
+    total_scholar_amt AS 'Total Scholarship $'
+    total_offered_aid AS 'Total Offered Aid $'
+    coa_total_ay AS 'COA AY Total'
+    overaward_flag AS 'Overaward Flag'
+    any_renewal_flag AS 'Any Renewal'
+  WHERE aid_year EQ '&AID_YEAR'
+ON TABLE SET PAGE-NUM OFF
+END

@@ -1,0 +1,21 @@
+-* Packaging Status & Aging (Aid Year)
+-* Prompts: &AID_YEAR, &COLLEGE (optional)
+
+-SET &AID_YEAR='2025-2026';
+-SET &COLLEGE='ALL';
+
+TABLE FILE vw_packaging_status
+  SUM
+    banner_pidm AS 'PIDM'
+    days_since_fafsa AS 'Days Since FAFSA'
+    days_since_last_package_update AS 'Days Since Update'
+  BY college AS 'College'
+  BY package_status AS 'Package Status'
+  BY residency AS 'Residency'
+  WHERE aid_year EQ '&AID_YEAR'
+  IF '&COLLEGE' NE 'ALL' THEN WHERE college EQ '&COLLEGE';
+ON TABLE SET PAGE-NUM OFF
+ON TABLE SET STYLE *
+TYPE=REPORT, GRID=ON, FONT='ARIAL', SIZE=9,$
+ENDSTYLE
+END

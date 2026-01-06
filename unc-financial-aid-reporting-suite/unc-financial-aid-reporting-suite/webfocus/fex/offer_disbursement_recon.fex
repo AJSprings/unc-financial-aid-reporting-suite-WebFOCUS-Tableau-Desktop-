@@ -1,0 +1,18 @@
+-* Offer vs Disbursement Reconciliation
+-SET &AID_YEAR='2025-2026';
+
+TABLE FILE vw_offer_vs_disbursement_recon
+  PRINT
+    banner_pidm AS 'PIDM'
+    college AS 'College'
+    level AS 'Level'
+    fund_code AS 'Fund'
+    fund_type AS 'Type'
+    offered_amt AS 'Offered'
+    disbursed_amt AS 'Disbursed'
+    variance AS 'Variance'
+    recon_status AS 'Status'
+  WHERE aid_year EQ '&AID_YEAR'
+  AND recon_status EQ 'REVIEW'
+ON TABLE SET PAGE-NUM OFF
+END

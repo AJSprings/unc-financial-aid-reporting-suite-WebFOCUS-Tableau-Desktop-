@@ -1,0 +1,38 @@
+# unc-financial-aid-reporting-suite/webfocus/reportcaster/schedules.yml
+schedules:
+  - name: "Daily Verification Backlog"
+    frequency: "DAILY"
+    time_local: "07:00"
+    procedure: "verification_worklist.fex"
+    parameters:
+      AID_YEAR: "2025-2026"
+    output:
+      format: ["HTML", "EXCEL"]
+      burst_by: ["college"]   # deliver per college
+    recipients:
+      - group: "FA_Operations_Team"
+
+  - name: "Weekly Packaging + Exceptions Summary"
+    frequency: "WEEKLY"
+    day_of_week: "MON"
+    time_local: "08:00"
+    procedure: "packaging_status.fex"
+    parameters:
+      AID_YEAR: "2025-2026"
+      COLLEGE: "ALL"
+    output:
+      format: ["PDF"]
+    recipients:
+      - group: "Director_Financial_Aid"
+      - group: "Academic_Affairs_IT_Support"
+
+  - name: "Census Enrollment / Disbursement Reconciliation"
+    frequency: "TERM_MILESTONE"
+    trigger: "CENSUS_PLUS_2_DAYS"
+    procedure: "offer_disbursement_recon.fex"
+    parameters:
+      AID_YEAR: "2025-2026"
+    output:
+      format: ["EXCEL"]
+    recipients:
+      - group: "FA_Compliance_Review"
