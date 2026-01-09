@@ -32,3 +32,9 @@ Schema: `fa`
 
 ```bash
 export FA_DSN="dbname=postgres user=postgres password=postgres host=localhost port=5432"
+
+pip install -r data/requirements.txt
+
+cd data
+python generate_data.py
+
